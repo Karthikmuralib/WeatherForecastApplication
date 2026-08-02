@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weatherly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-card">
+        <div class="hero-top">
+          <div>
+            <p class="eyebrow">Weatherly</p>
+            <h1>Forecast for the next few days</h1>
+          </div>
+          <button id="unitToggle" class="toggle-btn" type="button">°C</button>
+        </div>
+
+        <form id="searchForm" class="search-form">
+          <div class="search-input-wrap">
+            <input
+              id="cityInput"
+              type="text"
+              placeholder="Search a city"
+              autocomplete="off"
+            />
+            <ul id="suggestionsList" class="suggestions-list" hidden></ul>
+          </div>
+          <button type="submit" class="primary-btn">Search</button>
+          <button id="locationButton" class="secondary-btn" type="button">
+            Use my location
+          </button>
+        </form>
+
+        <div id="statusBanner" class="status-banner" hidden></div>
+      </header>
+
+      <main class="content-grid">
+        <section id="currentWeather" class="panel current-panel">
+          <div id="loadingState" class="loading-state" hidden>
+            <div class="spinner"></div>
+            <p>Loading weather conditions…</p>
+          </div>
+          <div id="weatherContent" hidden></div>
+        </section>
+
+        <section class="panel insights-panel">
+          <h2>Today’s guidance</h2>
+          <p id="suggestionText" class="suggestion-text">
+            Search for a location to get personalized advice.
+          </p>
+        </section>
+      </main>
+
+      <section class="panel forecast-panel">
+        <div class="panel-head">
+          <h2>5-day outlook</h2>
+          <p>Daily summaries with a simple, clear view of the week ahead.</p>
+        </div>
+        <div id="forecastRow" class="forecast-row"></div>
+      </section>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

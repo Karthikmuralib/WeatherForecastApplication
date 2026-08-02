@@ -1,0 +1,50 @@
+# Weather Forecast Web App
+
+A polished weather forecast experience built with Node.js and Express. The app uses the OpenWeatherMap API through a backend proxy so the API key never needs to be exposed in the client.
+
+## What is included
+
+- City search with debounced autocomplete suggestions
+- Current conditions including temperature, feels like, humidity, wind, pressure, visibility, and sunrise/sunset
+- A 5-day forecast presented as a horizontally scrollable row of cards
+- A “Use my location” button that uses the browser geolocation API
+- A Celsius/Fahrenheit toggle that re-renders existing data without refetching
+- Local persistence of the last searched city
+- A weather-based suggestions engine that produces natural guidance for clothing and planning
+- Honest error handling for empty input, city not found, rate limiting, network issues, and server failures
+
+## Project structure
+
+- server/server.js – Express app and API routes
+- server/weatherApi.js – OpenWeatherMap proxy helpers and error handling
+- server/suggestions.js – Weather-based suggestions engine
+- public/index.html – App shell and content structure
+- public/styles.css – Visual design and responsive layout
+- public/app.js – Frontend logic, search flow, and rendering
+
+## Setup
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Copy the example environment file and add your OpenWeatherMap API key:
+
+   ```bash
+   copy .env.example .env
+   ```
+
+3. Start the app:
+
+   ```bash
+   npm start
+   ```
+
+4. Open <http://localhost:3000> in your browser.
+
+## Notes
+
+- The app uses the free OpenWeatherMap endpoints and expects a valid API key.
+- The UI is intentionally focused on weather content and helpful suggestions rather than unrelated features.

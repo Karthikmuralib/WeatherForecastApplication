@@ -1,0 +1,14 @@
+{
+  "name": "weather-forecast-web-app",
+  "version": "1.0.0",
+  "description": "A polished weather forecast web app with an Express backend proxy.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.19.2"
+  }
+}
