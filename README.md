@@ -30,11 +30,23 @@ A polished weather forecast experience built with Node.js and Express. The app u
    npm install
    ```
 
-2. Copy the example environment file and add your OpenWeatherMap API key:
+2. Create your environment file from the example and add your OpenWeatherMap API key.
 
-   ```bash
-   copy .env.example .env
-   ```
+   - Windows (PowerShell / cmd):
+
+     ```powershell
+     copy .env.example .env
+     notepad .env    # then paste your OPENWEATHER_API_KEY value and save
+     ```
+
+   - macOS / Linux:
+
+     ```bash
+     cp .env.example .env
+     nano .env       # or use your preferred editor
+     ```
+
+   In ` .env` set `OPENWEATHER_API_KEY` to your key. The repository already ignores ` .env` so your secret will not be committed.
 
 3. Start the app:
 
@@ -42,7 +54,9 @@ A polished weather forecast experience built with Node.js and Express. The app u
    npm start
    ```
 
-4. Open <http://localhost:3000> in your browser.
+4. Open the app in your browser. By default the server listens on the port in ` .env` (e.g. `3001`):
+
+   http://localhost:3001
 
 ## Notes
 
