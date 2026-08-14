@@ -78,6 +78,7 @@ function renderWeather() {
 
   const weather = state.weather;
   weatherContent.hidden = false;
+  const emoji = getWeatherEmoji(weather.description, weather.icon);
   weatherContent.innerHTML = `
     <div class="weather-content">
       <div class="weather-main">
@@ -91,7 +92,7 @@ function renderWeather() {
             </div>
           </div>
         </div>
-        <img src="https://openweathermap.org/img/wn/${weather.icon}@2x.png" alt="${weather.description}" />
+        <div class="weather-emoji" aria-hidden="true">${emoji}</div>
       </div>
       <div class="weather-meta">
         <div class="meta-card"><span class="label">Humidity</span><span class="value">${weather.humidity}%</span></div>
@@ -113,7 +114,7 @@ function renderWeather() {
         (day) => `
       <article class="forecast-card">
         <h3>${formatDate(day.date)}</h3>
-        <img src="https://openweathermap.org/img/wn/${day.icon}@2x.png" alt="${day.description}" />
+        <div class="weather-emoji" aria-hidden="true">${getWeatherEmoji(day.description, day.icon)}</div>
         <p>${day.description}</p>
         <p class="forecast-temp">${Math.round(convertTemp(day.maxTemp))}${toUnitLabel()} / ${Math.round(convertTemp(day.minTemp))}${toUnitLabel()}</p>
       </article>
@@ -132,6 +133,26 @@ function renderWeather() {
     document.body.classList.add("thunderstorm");
   else document.body.classList.add("clear");
   document.body.classList.add(isNight ? "night" : "day");
+}
+
+function getWeatherEmoji(description, icon) {
+  const d = (description || "").toLowerCase();
+  if (d.includes("thunder")) return "⛈️";
+  if (d.includes("snow") || d.includes("sleet")) return "❄️";
+  if (d.includes("rain") || d.includes("drizzle")) return "🌧️";
+  if (d.includes("cloud")) return "☁️";
+  if (d.includes("clear") || d.includes("sun")) return "☀️";
+  if (d.includes("fog") || d.includes("mist") || d.includes("haze"))
+    return "🌫️";
+  if (d.includes("wind")) return "🌬️";
+  // fallback: map some icon codes to emojis
+  if (icon && icon.startsWith("01")) return "☀️";
+  if (icon && icon.startsWith("02")) return "⛅";
+  if (icon && icon.startsWith("03")) return "☁️";
+  if (icon && icon.startsWith("09")) return "🌧️";
+  if (icon && icon.startsWith("10")) return "🌦️";
+  if (icon && icon.startsWith("11")) return "⛈️";
+  return "🌤️";
 }
 
 function showLoading() {

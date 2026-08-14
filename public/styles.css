@@ -17,6 +17,10 @@
     sans-serif;
 }
 
+*::selection {
+  background: rgba(125, 211, 252, 0.18);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -65,6 +69,13 @@ body.clear.night {
 .hero-card {
   padding: 24px;
 }
+.hero-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+}
 .hero-top {
   display: flex;
   justify-content: space-between;
@@ -85,7 +96,9 @@ p {
   margin: 0;
 }
 h1 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
+  letter-spacing: -0.02em;
+  color: #eaf6ff;
 }
 .search-form {
   display: flex;
@@ -107,6 +120,11 @@ input {
   color: var(--text);
   background: rgba(255, 255, 255, 0.12);
   outline: none;
+}
+input {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.02),
+    0 4px 16px rgba(2, 6, 23, 0.18);
 }
 input::placeholder {
   color: rgba(245, 247, 251, 0.7);
@@ -131,6 +149,9 @@ button:hover {
 .primary-btn {
   background: var(--accent);
   color: #06121d;
+}
+.primary-btn {
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.14);
 }
 .secondary-btn,
 .toggle-btn {
@@ -194,8 +215,20 @@ button:hover {
   gap: 6px;
 }
 .big-temp {
-  font-size: clamp(2.8rem, 7vw, 4.4rem);
+  font-size: clamp(3.2rem, 7vw, 5rem);
   font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 6px 18px rgba(6, 18, 29, 0.45);
+}
+.weather-emoji {
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.35));
+  display: inline-block;
+  transform: translateY(0);
+  transition: transform 220ms ease;
+}
+.weather-emoji:hover {
+  transform: translateY(-6px);
 }
 .weather-meta {
   display: grid;
@@ -244,6 +277,13 @@ button:hover {
   border-radius: 18px;
   border: 1px solid var(--border);
 }
+.forecast-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+}
 .forecast-card h3 {
   font-size: 0.95rem;
   margin-bottom: 8px;
@@ -290,4 +330,13 @@ button:hover {
   .weather-meta {
     grid-template-columns: 1fr;
   }
+}
+
+/* small visual polish for cards */
+.meta-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
 }
