@@ -77,3 +77,13 @@ Steps to deploy:
 Once deployed, update this README to include the public URL under **Demo** or replace the `localhost` link above.
 
 Temporary demo (quick): if you only want a short-lived public URL while you run the app locally, use `ngrok http 3001` and share the generated HTTPS URL. This requires ngrok to be running while demoing.
+
+## Demo
+
+The app is deployed and available at:
+
+https://weatherforecastapplication.onrender.com
+
+The `/health` endpoint is available for quick checks:
+
+https://weatherforecastapplication.onrender.com/health
