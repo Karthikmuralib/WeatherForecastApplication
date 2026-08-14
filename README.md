@@ -31,7 +31,6 @@ A polished weather forecast experience built with Node.js and Express. The app u
    ```
 
 2. Create your environment file from the example and add your OpenWeatherMap API key.
-
    - Windows (PowerShell / cmd):
 
      ```powershell

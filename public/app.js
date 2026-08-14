@@ -16,6 +16,21 @@ const forecastRow = document.getElementById("forecastRow");
 const unitToggle = document.getElementById("unitToggle");
 const locationButton = document.getElementById("locationButton");
 
+// If the HTML is opened from a file server (e.g. Live Server on port 5500),
+// API requests should target the running Express backend on port 3001.
+const API_BASE = (function () {
+  try {
+    const port = location.port;
+    // common Live Server port is 5500; if not served by the backend, point to 3001
+    if (port && port !== "3001") {
+      return "http://localhost:3001";
+    }
+  } catch (e) {
+    // ignore and fall back to same-origin
+  }
+  return "";
+})();
+
 function setStatus(message, tone = "info") {
   statusBanner.hidden = false;
   statusBanner.textContent = message;
@@ -131,13 +146,15 @@ function hideLoading() {
 function getWeatherByCity(city) {
   showLoading();
   clearStatus();
-  fetch(`/api/weather?city=${encodeURIComponent(city)}`)
+  fetch(`${API_BASE}/api/weather?city=${encodeURIComponent(city)}`)
     .then((response) => response.json())
     .then((payload) => {
       if (!payload.error) {
         state.weather = payload;
         localStorage.setItem("lastCity", city);
-        return fetch(`/api/forecast?city=${encodeURIComponent(city)}`);
+        return fetch(
+          `${API_BASE}/api/forecast?city=${encodeURIComponent(city)}`,
+        );
       }
       throw new Error(payload.error.message);
     })
@@ -157,12 +174,12 @@ function getWeatherByCity(city) {
 function getWeatherByCoords(lat, lon, label) {
   showLoading();
   clearStatus();
-  fetch(`/api/weather?lat=${lat}&lon=${lon}`)
+  fetch(`${API_BASE}/api/weather?lat=${lat}&lon=${lon}`)
     .then((response) => response.json())
     .then((payload) => {
       if (!payload.error) {
         state.weather = payload;
-        return fetch(`/api/forecast?lat=${lat}&lon=${lon}`);
+        return fetch(`${API_BASE}/api/forecast?lat=${lat}&lon=${lon}`);
       }
       throw new Error(payload.error.message);
     })
@@ -194,7 +211,7 @@ const debouncedSuggest = debounce((value) => {
     return;
   }
 
-  fetch(`/api/geocode?q=${encodeURIComponent(value)}`)
+  fetch(`${API_BASE}/api/geocode?q=${encodeURIComponent(value)}`)
     .then((response) => response.json())
     .then((payload) => {
       if (!payload.error) {
