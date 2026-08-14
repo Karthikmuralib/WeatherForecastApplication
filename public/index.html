@@ -20,7 +20,26 @@
             <p class="eyebrow">Weatherly</p>
             <h1>Forecast for the next few days</h1>
           </div>
-          <button id="unitToggle" class="toggle-btn" type="button">°C</button>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <button id="unitToggle" class="toggle-btn" type="button">°C</button>
+            <button
+              id="themeToggle"
+              class="toggle-btn"
+              type="button"
+              title="Toggle light/dark"
+            >
+              🌗
+            </button>
+            <select
+              id="paletteSelect"
+              class="toggle-btn"
+              aria-label="Palette"
+              title="Color palette"
+            >
+              <option value="ocean">Ocean</option>
+              <option value="sunset">Sunset</option>
+            </select>
+          </div>
         </div>
 
         <form id="searchForm" class="search-form">

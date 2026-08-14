@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="sun" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="12" fill="#FFD166" />
+  </symbol>
+  <symbol id="cloud" viewBox="0 0 64 64">
+    <path d="M20 45h28a9 9 0 0 0 0-18 12 12 0 0 0-23-3A8 8 0 0 0 12 34a7 7 0 0 0 8 11z" fill="#E6EEF6" />
+  </symbol>
+  <symbol id="rain" viewBox="0 0 64 64">
+    <path d="M20 35h28a9 9 0 0 0 0-18 12 12 0 0 0-23-3A8 8 0 0 0 12 24a7 7 0 0 0 8 11z" fill="#E6EEF6" />
+    <g fill="#7CC6FF">
+      <path d="M24 46c0 2-2 5-2 5s-2-3-2-5a2 2 0 1 1 4 0z"/>
+      <path d="M34 46c0 2-2 5-2 5s-2-3-2-5a2 2 0 1 1 4 0z"/>
+      <path d="M44 46c0 2-2 5-2 5s-2-3-2-5a2 2 0 1 1 4 0z"/>
+    </g>
+  </symbol>
+  <symbol id="snow" viewBox="0 0 64 64">
+    <path d="M20 35h28a9 9 0 0 0 0-18 12 12 0 0 0-23-3A8 8 0 0 0 12 24a7 7 0 0 0 8 11z" fill="#E6EEF6" />
+    <g fill="#FFFFFF">
+      <circle cx="24" cy="48" r="2" />
+      <circle cx="34" cy="50" r="2" />
+      <circle cx="44" cy="48" r="2" />
+    </g>
+  </symbol>
+  <symbol id="storm" viewBox="0 0 64 64">
+    <path d="M20 35h28a9 9 0 0 0 0-18 12 12 0 0 0-23-3A8 8 0 0 0 12 24a7 7 0 0 0 8 11z" fill="#E6EEF6" />
+    <path d="M36 40l-6 10h8l-2 6" fill="#FFDD57" />
+  </symbol>
+</svg>
