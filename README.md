@@ -61,3 +61,19 @@ A polished weather forecast experience built with Node.js and Express. The app u
 
 - The app uses the free OpenWeatherMap endpoints and expects a valid API key.
 - The UI is intentionally focused on weather content and helpful suggestions rather than unrelated features.
+
+## Deploying to Render (recommended)
+
+This project is ready to deploy to Render with minimal steps. Render will build the repo, install dependencies, and run the `web` command from the `Procfile`.
+
+Steps to deploy:
+
+1. Go to https://render.com and sign in (you can use GitHub to connect).
+2. Create a new **Web Service** and connect the GitHub repository for this project.
+3. For build and start commands, use the defaults (`npm install` / `npm start`). Render will also honor the `Procfile` added to this repository.
+4. Add an environment variable named `OPENWEATHER_API_KEY` in the Render dashboard (Environment → Environment Variables) and paste your OpenWeatherMap API key.
+5. Deploy the service. After the first deploy completes you'll have a public HTTPS URL (for example `https://your-app.onrender.com`).
+
+Once deployed, update this README to include the public URL under **Demo** or replace the `localhost` link above.
+
+Temporary demo (quick): if you only want a short-lived public URL while you run the app locally, use `ngrok http 3001` and share the generated HTTPS URL. This requires ngrok to be running while demoing.
