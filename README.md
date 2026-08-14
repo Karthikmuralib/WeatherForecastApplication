@@ -87,3 +87,18 @@ https://weatherforecastapplication.onrender.com
 The `/health` endpoint is available for quick checks:
 
 https://weatherforecastapplication.onrender.com/health
+
+![Live Demo](https://img.shields.io/badge/demo-online-brightgreen?style=flat-square)
+
+### Automatic Deploys from GitHub
+
+This repository includes a GitHub Actions workflow that can trigger a Render deploy when you push to `master`.
+
+To enable automatic deploys:
+
+1. In your GitHub repository settings, go to **Secrets** → **Actions** and add two secrets:
+   - `RENDER_SERVICE_ID` — the ID of your Render service (found in the Render dashboard URL or service settings).
+   - `RENDER_API_KEY` — a Render API key with permission to create deploys (create one in Render account settings → API Keys).
+2. Push to `master` or run the workflow manually from the Actions tab.
+
+The workflow posts to the Render API to trigger a new deploy. Keep your API key private.
