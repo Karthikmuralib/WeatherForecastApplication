@@ -2,90 +2,167 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weatherly</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+
+    <meta
+      name="description"
+      content="Weatherly - Live weather forecast application"
     />
+
+    <title>Weatherly</title>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="app-shell">
-      <header class="hero-card">
-        <div class="hero-top">
-          <div>
-            <p class="eyebrow">Weatherly</p>
-            <h1>Forecast for the next few days</h1>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px">
-            <button id="unitToggle" class="toggle-btn" type="button">°C</button>
-            <button
-              id="themeToggle"
-              class="toggle-btn"
-              type="button"
-              title="Toggle light/dark"
-            >
-              🌗
-            </button>
-            <select
-              id="paletteSelect"
-              class="toggle-btn"
-              aria-label="Palette"
-              title="Color palette"
-            >
-              <option value="ocean">Ocean</option>
-              <option value="sunset">Sunset</option>
-            </select>
-          </div>
+
+  <body class="palette-ocean">
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg class="brand-svg" viewBox="0 0 64 64">
+            <use href="icons.svg#sun"></use>
+          </svg>
         </div>
 
+        <div>
+          <h1>Weatherly</h1>
+
+          <p>Live weather forecast</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Temperature Unit -->
+        <button
+          id="unitToggle"
+          class="control-button"
+          type="button"
+          title="Change temperature unit"
+        >
+          °C
+        </button>
+
+        <!-- Theme -->
+        <button
+          id="themeToggle"
+          class="control-button"
+          type="button"
+          title="Toggle theme"
+        >
+          🌙
+        </button>
+
+        <!-- Palette -->
+        <select
+          id="paletteSelect"
+          class="palette-select"
+          aria-label="Choose color palette"
+        >
+          <option value="ocean">Ocean</option>
+
+          <option value="sunset">Sunset</option>
+        </select>
+      </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+      <!-- ================= SEARCH ================= -->
+
+      <section class="search-section">
         <form id="searchForm" class="search-form">
-          <div class="search-input-wrap">
+          <div class="input-wrapper">
+            <span class="search-icon"> 🔍 </span>
+
             <input
-              id="cityInput"
               type="text"
-              placeholder="Search a city"
+              id="cityInput"
+              placeholder="Search for a city..."
               autocomplete="off"
             />
+
+            <!-- Suggestions -->
             <ul id="suggestionsList" class="suggestions-list" hidden></ul>
           </div>
-          <button type="submit" class="primary-btn">Search</button>
-          <button id="locationButton" class="secondary-btn" type="button">
-            Use my location
-          </button>
+
+          <button type="submit" class="search-button">Search</button>
         </form>
 
-        <div id="statusBanner" class="status-banner" hidden></div>
-      </header>
-
-      <main class="content-grid">
-        <section id="currentWeather" class="panel current-panel">
-          <div id="loadingState" class="loading-state" hidden>
-            <div class="spinner"></div>
-            <p>Loading weather conditions…</p>
-          </div>
-          <div id="weatherContent" hidden></div>
-        </section>
-
-        <section class="panel insights-panel">
-          <h2>Today’s guidance</h2>
-          <p id="suggestionText" class="suggestion-text">
-            Search for a location to get personalized advice.
-          </p>
-        </section>
-      </main>
-
-      <section class="panel forecast-panel">
-        <div class="panel-head">
-          <h2>5-day outlook</h2>
-          <p>Daily summaries with a simple, clear view of the week ahead.</p>
-        </div>
-        <div id="forecastRow" class="forecast-row"></div>
+        <button id="locationButton" class="location-button" type="button">
+          📍 Use my location
+        </button>
       </section>
-    </div>
+
+      <!-- ================= STATUS ================= -->
+
+      <div id="statusBanner" class="status-banner" hidden></div>
+
+      <!-- ================= LOADING ================= -->
+
+      <section id="loadingState" class="loading-state" hidden>
+        <div class="spinner"></div>
+
+        <p>Loading weather...</p>
+      </section>
+
+      <!-- ================= CURRENT WEATHER ================= -->
+
+      <section id="weatherContent" class="weather-card" hidden>
+        <!-- JavaScript inserts content -->
+      </section>
+
+      <!-- ================= WEATHER GUIDE ================= -->
+
+      <section class="guidance-panel">
+        <div class="guidance-icon">💡</div>
+
+        <div>
+          <p class="eyebrow">Weather Guide</p>
+
+          <h2>Today's suggestion</h2>
+
+          <p id="suggestionText">
+            Search for a city to see live conditions and a helpful suggestion.
+          </p>
+
+          <div id="suggestionItems" class="suggestion-items"></div>
+        </div>
+      </section>
+
+      <!-- ================= FORECAST ================= -->
+
+      <section class="forecast-section">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">Upcoming</p>
+
+            <h2>5-Day Forecast</h2>
+          </div>
+        </div>
+
+        <div id="forecastRow" class="forecast-row">
+          <!-- JavaScript inserts forecast -->
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+      <p>
+        Weather data provided by
+        <a
+          href="https://openweathermap.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          OpenWeatherMap
+        </a>
+      </p>
+    </footer>
 
     <script src="app.js"></script>
   </body>
