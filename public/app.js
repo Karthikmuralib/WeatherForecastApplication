@@ -1,8 +1,5 @@
-/* =========================================================
-   1. API CONFIGURATION
-========================================================= */
 
-// Put your NEW OpenWeatherMap API key inside the quotes.
+
 const API_KEY = "6d9c36ce8bb0aedf5a5598929b2c7e57";
 
 const WEATHER_API = "https://api.openweathermap.org/data/2.5/weather";
